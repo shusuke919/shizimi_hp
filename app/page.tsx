@@ -1,94 +1,77 @@
+"use client";
+import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 
-export default function Home() {
+export default function PaymentPage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className={styles.container}>
+      {/* ヘッダー部分 */}
+      <header className={styles.header}>
+        <h1 className={styles.companyName}>しじみ庵</h1>
+      </header>
 
-        <div className={styles.ctas}>
+      {/* メインコンテンツ */}
+      <main className={styles.main}>
+        {/* 決済リンク */}
+        <section className={styles.section}>
+          <h2>決済リンク</h2>
+          <p className={styles.note}>
+            以下のQRコードを読み取ってお支払いください
+          </p>
+          <div className={styles.qrWrap}>
+            {/* PayPayのQRコード */}
+            <div className={styles.qrItem}>
+              <Image
+                src="/QR_950143しじみpaypay.png"
+                alt="PayPay決済用QRコード"
+                width={200}
+                height={200}
+                className={styles.qrImage}
+              />
+              <p>PayPay</p>
+            </div>
+            {/* PayどんのQRコード */}
+            <div className={styles.qrItem}>
+              <Image
+                src="/sizimipayどん.png"
+                alt="Payどん決済用QRコード"
+                width={200}
+                height={200}
+                className={styles.qrImage}
+              />
+              <p>Payどん</p>
+            </div>
+          </div>
+        </section>
+
+        {/* 商品購入ページリンク */}
+        <section className={styles.section}>
+          <h2>商品購入決済ページ</h2>
+          <p>しじみ庵のWebサイトからお買い物が可能です。</p>
           <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://sizimian.com/"
             target="_blank"
             rel="noopener noreferrer"
+            className={styles.purchaseLink}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+            しじみ庵商品購入決済ページへ
           </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+        </section>
+
+        {/* 予約ページへのリンクを追加 */}
+        <section className={styles.section}>
+          <h2>来店予約予約</h2>
+          <p>しじみ庵への来店予約フォームです。</p>
+          <Link href="/reservation" className={styles.purchaseLink}>
+            予約フォームへ
+          </Link>
+        </section>
       </main>
+
+      {/* フッター */}
       <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <small>© 2023 しじみ庵</small>
       </footer>
     </div>
   );
